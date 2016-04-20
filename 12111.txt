@@ -1,0 +1,58 @@
+
+SELECT 
+DISTINCT p.projectId,p.pmId,pm.pmName,p.tellPhone,p.partyName,p.projectName,p.isFinish,p.signedDate,p.contractAcount,
+p.clearingAcount,p.projectType,p.projectAddr,p.remarkOne,p.remarkTwo,p.createDate,p.lastUpdateDate
+FROM projectInfo p
+LEFT JOIN projectManager pm ON p.pmId = pm.pmId	-- 项目经理
+LEFT JOIN projectToll pt ON pt.projectId = p.projectId	-- 工程收费
+LEFT JOIN invoice i ON i.projectId = p.projectId -- 发票
+LEFT JOIN receipt r ON r.projectId = p.projectId -- 收据
+LEFT JOIN evection e ON e.projectId = p.projectId -- 外出证
+LEFT JOIN evectionpostpone ep ON ep.evectionId = e.evectionId  -- 外出证延期
+LEFT JOIN certigier c ON c.projectId = p.projectId -- 授权人
+LEFT JOIN bankinput b ON b.projectId = p.projectId -- 银行
+WHERE 1=1
+AND 
+(
+	pm.pmName LIKE '%1%'	-- 项目经理
+	OR p.partyName LIKE '%1%'	-- 甲方名称
+	OR p.tellPhone LIKE '%1%'	-- 甲方名称
+	OR p.projectName LIKE '%1%'	-- 项目名称
+	OR p.projectAddr LIKE '%1%'	-- 工程地址
+	OR p.remarkOne LIKE '%1%'	-- 备注1
+	OR p.remarkTwo LIKE '%1%'	-- 备注2
+	OR i.invoiceNumber LIKE '%1%'	-- 发票号
+	OR i.billNo LIKE '%1%'	-- 税单号
+	OR i.remark LIKE '%1%'	-- 发票的备注
+	OR r.receiptNO LIKE '%1%'	-- 收据号
+	OR r.remark LIKE '%1%'	-- 收据的备注
+	OR e.evectionNO LIKE '%1%'	-- 外出证号
+	OR e.remark LIKE '%1%'	-- 外出证备注
+	OR ep.postponeNumber LIKE '%1%'	-- 外出证延期号
+	OR ep.remark LIKE '%1%'	-- 外出证延期备注
+	OR c.certigierName LIKE '%1%' 	-- 授权人
+	OR c.remark LIKE '%1%'	-- 授权人备注
+	OR b.bankName LIKE '%1%' -- 户名全称
+	OR b.bankAccount LIKE '%1%'
+	OR b.depositBank LIKE '%1%'	-- 开户银行
+	OR b.cachet LIKE '%1%'	-- 公章
+	OR b.financialSeal LIKE '%1%'	-- 财务章
+	OR b.personalSeal LIKE '%1%'	-- 私章
+	OR b.otherSeal LIKE '%1%'	-- 其他印章
+	OR b.depositBankAddr LIKE '%1%'	-- 开户银行地址
+	OR b.remark LIKE '%1%'	-- 银行备注
+)
+AND 
+(
+	REPLACE(p.contractAcount,',','') -- 合同金额  replace(t.balance,',',''))
+	p.clearingAcount -- 结算金额
+	pt.importAmount -- 汇入金额
+	pt.exportAmount -- 汇出金额
+	pt.companyFunds -- 汇回公司款
+	pt.localBankDeposit -- 当地银行存款
+	pt.balance -- 余额
+)
+AND
+(
+	p.signedDate -- 签订日期
+)
