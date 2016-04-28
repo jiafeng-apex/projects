@@ -1,0 +1,72 @@
+
+
+git指令
+文档地址： http://www.open-open.com/lib/view/open1414396787325.html
+
+一、仓库的管理操作命令
+1、git init把目录便给git可以管理的仓库
+2、git add fileName 把file添加到暂存区
+3、git commit -m "注释"  把文件提交到仓库
+4、git status 查看仓库下是否还有文件未提交
+5、git diff fileName  查看file修改了什么内容
+6、git log 查看提交的历史记录
+7、git reflog 查看提交的版本号
+8、git reset --hard HEAD^ 回退到上个版本，如果有两个^^，就表示回退到上上个版本，以此类推
+9、git reset --hard HEAD~100 表示回退到前100个版本
+10、git reset --hard 版本号 (该版本号是通过git reflog命令查看到的)
+11、cat fileName 查看文件内容
+12、git checkout --fileName  把file在工作区中中的修改给撤销，分两种情况：
+	1.文件自动修改后，还没有放到暂存区(就是还没有add)，使用撤销修改就回到和版本库一模一样的状态。
+	2.另外一种是文件已经放到暂存区了(就是已经执行了add操作)，接着又对文件做了修改，撤销修改就回到添加到暂存区后的状态。
+13、rm fileName 把目录中的文件删除掉(也可以直接在文件目录中把文件给删了)
+	1.这样删除只是把文件从仓库中删掉，如果想彻底从版本库中删掉该文件，可以再执行commit命令
+	2.在没有执行commit之前，可以使用git checkout --fileName把文件给恢复了
+
+二、远程仓库操作命令
+1、ssh-keygen  -t rsa –C "email地址"  该命令执行时如果有让输入密码，直接跳过(敲回车键就可以了)
+2、git remote add origin https://github.com/jiafeng-apex/projects.git 把已有的本地仓库与GitHub仓库进行关联
+3、git push -u origin master 把本地仓库分支master内容推送到远程仓库去
+	注：加上-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就不需要该参数(git push origin master)
+4、git clone https://github.com/jiafeng-apex/projects 把远程库中的内容克隆到本地仓库（类似于svn的checkout）
+
+
+三、分支的操作指令
+1、git branch dev 创建dev分支
+2、git checkout dev 切换到dev分支
+3、git checkout -b dev 创建并切换到dev分支
+4、git branch 查看当前的分支，查看时会列出所有的分支，当前分支前面会添加一个型号。
+5、git merge dev 用户合并dev分支到当前分支上
+6、git branch -d dev 删除dev分支
+7、git merge --no-ff -m "注释" dev 合并dev分支 --no-ff表示禁用fast forward(快进)
+	注：通常合并分支时，git一般使用"fast forward"模式，在这种模式下，删除分支后，会丢掉分支信息，用--no-ff可以禁用"fast forward"模式。
+8、git log --graph --pretty=oneline --abbrev-commit
+9、git stash 将当前的工作现场隐藏起来，然后用git status，是干净的
+10、git stash list 查看隐藏的工作现场
+11、git stash apply 恢复隐藏的工作现场，stash内容并不没有删除，
+12、git stash drop 删除工作现场
+13、git stash pop 恢复的同时把stash内容也删除了(apply和drop指令，用这一个指令都解决了)
+14、
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
