@@ -41,6 +41,12 @@ git指令
 	注：通常合并分支时，git一般使用"fast forward"模式，在这种模式下，删除分支后，会丢掉分支信息，用--no-ff可以禁用"fast forward"模式。
 8、git log --graph --pretty=oneline --abbrev-commit
 9、git stash 将当前的工作现场隐藏起来，然后用git status，是干净的
+10、git stash list 查看隐藏的工作现场
+11、git stash apply 恢复隐藏的工作现场，stash内容并不没有删除，
+12、git stash drop 删除工作现场
+13、git stash pop 恢复的同时把stash内容也删除了(apply和drop指令，用这一个指令都解决了)
+14、
+
 
 
 
