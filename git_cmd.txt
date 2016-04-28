@@ -23,5 +23,32 @@ git指令
 	2.在没有执行commit之前，可以使用git checkout --fileName把文件给恢复了
 
 二、远程仓库操作命令
-1、ssh-keygen  -t rsa –C "email地址"  该命令执行时如果有让输入密码，直接跳过(敲回车键就可以了)，
+1、ssh-keygen  -t rsa –C "email地址"  该命令执行时如果有让输入密码，直接跳过(敲回车键就可以了)
+2、git remote add origin https://github.com/jiafeng-apex/projects.git 把已有的本地仓库与GitHub仓库进行关联
+3、git push -u origin master 把本地仓库分支master内容推送到远程仓库去
+	注：加上-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就不需要该参数(git push origin master)
+4、git clone https://github.com/jiafeng-apex/projects 把远程库中的内容克隆到本地仓库（类似于svn的checkout）
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  
