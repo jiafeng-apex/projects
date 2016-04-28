@@ -30,6 +30,18 @@ git指令
 4、git clone https://github.com/jiafeng-apex/projects 把远程库中的内容克隆到本地仓库（类似于svn的checkout）
 
 
+三、分支的操作指令
+1、git branch dev 创建dev分支
+2、git checkout dev 切换到dev分支
+3、git checkout -b dev 创建并切换到dev分支
+4、git branch 查看当前的分支，查看时会列出所有的分支，当前分支前面会添加一个型号。
+5、git merge dev 用户合并dev分支到当前分支上
+6、git branch -d dev 删除dev分支
+7、git merge --no-ff -m "注释" dev 合并dev分支 --no-ff表示禁用fast forward(快进)
+	注：通常合并分支时，git一般使用"fast forward"模式，在这种模式下，删除分支后，会丢掉分支信息，用--no-ff可以禁用"fast forward"模式。
+8、git log --graph --pretty=oneline --abbrev-commit
+9、git stash 将当前的工作现场隐藏起来，然后用git status，是干净的
+
 
 
 
