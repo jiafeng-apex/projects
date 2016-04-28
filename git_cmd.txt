@@ -28,6 +28,13 @@ git指令
 3、git push -u origin master 把本地仓库分支master内容推送到远程仓库去
 	注：加上-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就不需要该参数(git push origin master)
 4、git clone https://github.com/jiafeng-apex/projects 把远程库中的内容克隆到本地仓库（类似于svn的checkout）
+5、git remome 查看远程库的信息
+6、git remote -v 查看远程库的详细信息，有抓取的和推送的
+7、git pull 把最近的提交从origin/master抓下来，然后在本地合并，解决冲突，再推送。
+8、多人协作：
+	1、首先，可以试图用git push origin branch-name推送自己的修改.
+	2、如果推送失败，则因为远程分支比你的本地更新早，需要先用git pull试图合并。
+	3、如果合并有冲突，则需要解决冲突，并在本地提交。再用git push origin branch-name推送。
 
 
 三、分支的操作指令
@@ -40,12 +47,12 @@ git指令
 7、git merge --no-ff -m "注释" dev 合并dev分支 --no-ff表示禁用fast forward(快进)
 	注：通常合并分支时，git一般使用"fast forward"模式，在这种模式下，删除分支后，会丢掉分支信息，用--no-ff可以禁用"fast forward"模式。
 8、git log --graph --pretty=oneline --abbrev-commit
-9、git stash 将当前的工作现场隐藏起来，然后用git status，是干净的
-10、git stash list 查看隐藏的工作现场
-11、git stash apply 恢复隐藏的工作现场，stash内容并不没有删除，
-12、git stash drop 删除工作现场
-13、git stash pop 恢复的同时把stash内容也删除了(apply和drop指令，用这一个指令都解决了)
-14、
+9、git stash 将当前的工作现场隐藏起来，然后用git status查看状态，是干净的
+10、git stash list 查看所有被隐藏的文件列表
+11、git stash apply 恢复被隐藏的文件，但是内容不删除
+12、git stash drop 删除文件
+13、git stash pop 恢复文件的同时把stash文件也删除了(apply和drop指令，用这一个指令都解决了)
+
 
 
 
